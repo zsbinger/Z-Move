@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Workout Tracker</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <header class="navbar">
+        <div class="'navbar__brand">
+            <img class="navbar__logo" src="/static/logo2.svg" alt="The WorkoutTracker logo" />Workout Tracker
+        </div>
+        <ul class="navbar__navigation">
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Recent</a></li>
+            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calendar</a></li>
+        </ul>
+    </header>
+    <main class="main">
+        <section>
+            <h1>Create new workout</h1>
+            <form class="form" method="POST">
+                <p class="form__input">
+                    <label for="entry" class="form__label">New workout:</label>
+                    <textarea name="workout" class="form__textarea" id="entry"></textarea>
+                </p>
+                    <button type="submit" class="form__submit">Add Workout</button>
+            </form>
+        </section>
+        <section>
+            <h1>Previously created workouts</h1>
+            {% for workout in workouts %}
+            <article class="entry">
+                <div>
+                    <h2 class="entry__title">{{ workout[0] | truncate(30, true) }}</h2>
+                    <time class="entry__date" datetime="{{ workout[1] }}"> {{ workout[2] }}</time>
+                </div>
+                <p class="entry__content">
+                    {{ workout[0] }}
+                </p>
+            </article>
+            {% endfor %}
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer__content">
+            <section class="left"></section>
+                <a class="footer__item">Made by Zac Binger</a>
+                <a class="footer__item">Check out my github</a>
+            <section class="right"></section>
+                <div class="footer__column">
+                    <a class="footer__item">Recent</a>
+                    <a class="footer__item">Calendar</a>
+                </div>
+                <div class="footer__column">
+                    <a class="footer__item">About</a>
+                    <a class="footer__item">How this was made</a>
+                </div>
+        </div>
+    </footer>
+</body>
+</html>
