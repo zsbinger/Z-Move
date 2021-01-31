@@ -8,6 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def create_app():
     # creates new Flask app and object with a unique name
     app = Flask(__name__)
@@ -17,7 +18,6 @@ def create_app():
         # serverSelectionTimeoutMS=3000  # 3 seconds
     )
     app.db = client.workouttracker
-
 
     @app.route("/", methods=["GET", "POST"])
     def home():
