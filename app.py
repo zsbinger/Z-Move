@@ -1,3 +1,5 @@
+__author__ = 'zsbinger'
+
 import os
 import datetime
 from flask import Flask, render_template, request
@@ -19,8 +21,42 @@ def create_app():
     )
     app.db = client.workouttracker
 
-    @app.route("/", methods=["GET", "POST"])
+    @app.route("/")
     def home():
+        return render_template("home.html")
+
+    @app.route("/login")
+    def login():
+        return render_template("login.html")
+
+    @app.route("/recent", methods=["GET"])
+    def recent():
+
+        workouts_with_date = [
+            (workout["content"],
+             workout["date"],
+             datetime.datetime.strptime(workout["date"], "%Y-%m-%d").strftime("%b %d")
+             )
+            for workout in app.db.workouts.find({})
+        ]
+
+        return render_template("recent.html", workouts=workouts_with_date)
+
+    @app.route("/creation", methods=["GET", "POST"])
+    def creation():
+        if request.method == "POST":
+            entry_content = request.form.get("workout")
+            formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")
+            app.db.workouts.insert({"content": entry_content, "date": formatted_date})
+
+        return render_template("creation.html")
+
+    @app.route("/exercises")
+    def exercises():
+        return render_template("exercises.html")
+
+    @app.route("/<user>/home", methods=["GET", "POST"])
+    def user_home():
         if request.method == "POST":
             entry_content = request.form.get("workout")
             formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")

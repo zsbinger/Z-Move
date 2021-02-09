@@ -1,23 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Workout Tracker</title>
-    <link rel="stylesheet" href="/static/styles.css" />
-</head>
-<body>
-    <header class="navbar">
-        <div class="'navbar__brand">
-            <img class="navbar__logo" src="/static/logo2.svg" alt="The WorkoutTracker logo" />Workout Tracker
-        </div>
-        <ul class="navbar__navigation">
-            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Recent</a></li>
-            <li class="navbar__navigation-item"><a href="#" class="navbar__link">Calendar</a></li>
-        </ul>
-    </header>
+{% extends "base.html" %}
+
+{% block content %}
     <main class="main">
         <section>
             <h1>Create new workout</h1>
@@ -44,21 +27,5 @@
             {% endfor %}
         </section>
     </main>
-    <footer class="footer">
-        <div class="footer__content">
-            <section class="left"></section>
-                <a class="footer__item">Made by Zac Binger</a>
-                <a class="footer__item">Check out my github</a>
-            <section class="right"></section>
-                <div class="footer__column">
-                    <a class="footer__item">Recent</a>
-                    <a class="footer__item">Calendar</a>
-                </div>
-                <div class="footer__column">
-                    <a class="footer__item">About</a>
-                    <a class="footer__item">How this was made</a>
-                </div>
-        </div>
-    </footer>
-</body>
-</html>
+
+{% endblock %}

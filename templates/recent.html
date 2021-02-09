@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <main class="">
+        <h1>Previously created workouts</h1>
+        {% for workout in workouts %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h2 class="">{{ workout[0] | truncate(30, true) }}</h2>
+                </div>
+                <div class="col">
+                    <time class="" datetime="{{ workout[1] }}"> {{ workout[2] }}</time>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <p class="">
+                        {{ workout[0] }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </main>
+
+{% endblock %}
