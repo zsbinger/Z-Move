@@ -14,9 +14,10 @@ class WorkoutForm(FlaskForm):
 
     # will eventually be a dictionary to keep track of each component
     # of the workout
-    workout_content = TextAreaField('Part A')
+    workout_content = TextAreaField('Workout')
     # add exercise drop down with list pulled from database
 
     add_section_button = SubmitField('Add Section')
     add_exercise_button = SubmitField('Add Exercise')
     submit_workout_button = SubmitField(label='Submit Workout')
+    load_workout_button = SubmitField(label='Load Previous Workout')

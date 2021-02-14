@@ -36,7 +36,10 @@ def create_app():
     def recent():
 
         workouts_with_date = [
-            (workout["content"],
+            (workout["name"],
+             workout["num_rounds"],
+             workout["scored"],
+             workout["content"],
              workout["date"],
              datetime.datetime.strptime(workout["date"], "%Y-%m-%d").strftime("%b %d")
              )
@@ -53,9 +56,16 @@ def create_app():
             session['workout_content'] = form.workout_content.data
             if request.method == "POST":
                 # save to mongodb database
+                name = form.name.data
+                num_rounds = form.num_rounds.data
                 workout_content = form.workout_content.data
+                scored = form.scored_checkbox.data
                 formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")
-                app.db.workouts.insert({"content": workout_content, "date": formatted_date})
+                app.db.workouts.insert({"name": name,
+                                        "num_rounds": num_rounds,
+                                        "scored": scored,
+                                        "content": workout_content,
+                                        "date": formatted_date})
 
             return redirect(url_for('creation'))
 

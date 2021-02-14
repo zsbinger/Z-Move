@@ -2,30 +2,7 @@
 
 {% block content %}
     <main class="main">
-        <section>
-            <h1>Create new workout</h1>
-            <form class="form" method="POST">
-                <p class="form__input">
-                    <label for="entry" class="form__label">New workout:</label>
-                    <textarea name="workout" class="form__textarea" id="entry"></textarea>
-                </p>
-                    <button type="submit" class="form__submit">Add Workout</button>
-            </form>
-        </section>
-        <section>
-            <h1>Previously created workouts</h1>
-            {% for workout in workouts %}
-            <article class="entry">
-                <div>
-                    <h2 class="entry__title">{{ workout[0] | truncate(30, true) }}</h2>
-                    <time class="entry__date" datetime="{{ workout[1] }}"> {{ workout[2] }}</time>
-                </div>
-                <p class="entry__content">
-                    {{ workout[0] }}
-                </p>
-            </article>
-            {% endfor %}
-        </section>
+        <h1>Welcome to Z-Move. A dynamic application for workout creation, tracking, and sharing.</h1>
     </main>
 
 {% endblock %}
