@@ -2,38 +2,35 @@
 
 {% block content %}
 
-    <main class="main">
-        <div class="container">
-          <form method="POST">
-            <div class="row">
-              <div class="col">
-                <div class="mb-3">
-                  <label for="workoutName" class="form-label"><h1>Workout Name</h1></label>
-                  <input class="form-control" id="workoutName" placeholder="Workout">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="mb-3">
-                  <label for="workoutName" class="form-label">Part A</label>
-                  <input class="form-control" id="workoutName" placeholder="Workout" name="workout">
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-check">
-                  <input class="form-check-input" type="checkbox" value="" id="scoredCheckChecked" checked>
-                  <label class="form-check-label" for="flexCheckChecked">
-                      Scored
-                  </label>
-                </div>
-              </div>
-            </div>
-            <button type="button" class="btn btn-outline-dark">Add Section</button>
-            <button type="button" class="btn btn-outline-primary">Add Exercise</button>
-            <button type="submit" class="btn btn-primary">Submit Workout</button>
-          </form>
-        </div>
-    </main>
+<button type="button" class="btn btn-outline-dark">Load Previously Created Workout</button>
+<form method="POST" id="workout_form">
+  {{ form.hidden_tag() }}
+
+  {% for m in get_flashed_messages() %}
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{ m }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+
+  {{ form.name.label(class="") }} {{ form.name(class="") }}
+  <br>
+  {{ form.num_rounds.label(class="") }} {{ form.num_rounds(class="") }}
+  <br>
+  {{ form.scored_checkbox.label(class="") }} {{ form.scored_checkbox(class="") }}
+  <br>
+  {{ form.workout_content.label(class="") }} {{ form.workout_content(class="") }}
+  <br>
+  {{ form.add_section_button(class="btn btn-outline-dark") }}
+  <br>
+  {{ form.add_exercise_button(class="btn btn-outline-primary") }}
+  <br>
+  {{ form.submit_workout_button(class="btn btn-primary") }}
+
+  {% if form.errors %}
+  {{ form.errors }}
+  {% endif %}
+</form>
+
 
 {% endblock %}
