@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
-    <title>Zachary Binger - Workout Tracker</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
+{% extends "base.html" %}
+
+{% block content %}
+
     <main>
       <img class="profile" src="LinkedInZacharyBinger.png" alt="Zac's profile picture." />
       <h1>Starting the creation of the Workout Tracker</h1>
@@ -25,5 +17,5 @@
       <p>One day this app will help you look like this:</p>
       <img class="code" src="CrossFit...Dead.png" alt="How you might look after a good workout." />
     </main>
-  </body>
-</html>
+
+{% endblock %}

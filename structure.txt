@@ -1,0 +1,44 @@
+├───app.py # main app.py file to be called to start server for web app
+├───requirements.txt # File of pip install statements for the app (used by Heroku)
+├───migrations # folder created for migrations by calling
+├───application # main project folder, sub-components are in separate folders
+│   │   models.py
+│   │   __init__.py
+│   │
+│   ├───movers
+│   │   │   forms.py
+│   │   │   views.py
+│   │   │
+│   │   ├───templates
+│   │      └───movers
+│   │             temp.html
+│   │
+│   │
+│   ├───workouts
+│   │   │   forms.py
+│   │   │   views.py
+│   │   │
+│   │   ├───templates
+│   │   │   └───workouts
+│   │   │           creation.html
+│   │   │           recent.html
+│   │   │           list.html
+│   │
+│   │
+│   ├───exercises
+│   │   │   forms.py
+│   │   │   views.py
+│   │   │
+│   │   ├───templates
+│   │   │   └───exercises
+│   │   │           add.html
+│   │   │           delete.html
+│   │   │           list.html
+│   │
+│   ├───static # CSS, JS, Images, etc...
+│   ├───templates
+│          base.html
+│          home.html
+│          index.html
+│          login.html
+

@@ -1,9 +1,9 @@
-from flask import render_template, session, redirect, url_for
 from flask_wtf import FlaskForm
 from wtforms import (StringField, BooleanField, IntegerField,
                      SelectField, TextField, TextAreaField,
                      DateField, SubmitField)
 from wtforms.validators import DataRequired
+
 
 class WorkoutForm(FlaskForm):
     # name = StringField('Workout Name', validators=[DataRequired()])
@@ -20,4 +20,5 @@ class WorkoutForm(FlaskForm):
     add_section_button = SubmitField('Add Section')
     add_exercise_button = SubmitField('Add Exercise')
     submit_workout_button = SubmitField(label='Submit Workout')
+    save_workout_button = SubmitField(label='Save Workout')
     load_workout_button = SubmitField(label='Load Previous Workout')
