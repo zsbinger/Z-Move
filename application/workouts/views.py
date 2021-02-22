@@ -5,7 +5,7 @@ from application.workouts.forms import WorkoutForm
 import datetime
 
 workouts_blueprint = Blueprint('workouts', __name__,
-                               template_folder='templates/workouts')
+                               template_folder='templates/')
 
 
 @workouts_blueprint.route("/create", methods=["GET", "POST"])

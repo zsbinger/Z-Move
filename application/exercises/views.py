@@ -5,7 +5,7 @@ from application.workouts.forms import WorkoutForm
 import datetime
 
 exercises_blueprint = Blueprint('exercises', __name__,
-                                template_folder='templates/exercises')
+                                template_folder='templates/')
 
 
 @exercises_blueprint.route("/view", methods=["GET", "POST"])
@@ -14,7 +14,7 @@ def view():
         (exercise["name"],
          exercise["description"]
          )
-        for exercise in Database.DATABASE.exercises.find({})
+        for exercise in Database.find_all('exercises')
     ]
 
     return render_template("exercises.html", exercises=exercises)
