@@ -1,22 +1,26 @@
 import os
-from flask import Flask
+from flask import Flask, render_template
 from pymongo import MongoClient
 from dotenv import load_dotenv
-
-load_dotenv()
-
-app = Flask(__name__)
-
-client = MongoClient(
-    os.environ.get('MONGODB_URI')
-    # serverSelectionTimeoutMS=3000  # 3 seconds
-)
-db = client.workouttracker
-
-app.config['SECRET_KEY'] = 'bingers'
+from application.database import Database
 
 
-# register Blueprints (after defining db)
-from application.workouts.views import workouts_blueprint
+def create_app():
+    # create and configure the app
+    app = Flask(__name__)
+    Database.initialize()
 
-app.register_blueprint(workouts_blueprint, url_prefix='/workouts')
+    app.config['SECRET_KEY'] = 'bingers'
+
+    @app.route("/")
+    def index():
+        return render_template("index.html")
+
+    # register Blueprints (after defining db)
+    from application.workouts.views import workouts_blueprint
+    app.register_blueprint(workouts_blueprint, url_prefix='/workouts')
+
+    from application.exercises.views import exercises_blueprint
+    app.register_blueprint(exercises_blueprint, url_prefix='/exercises')
+
+    return app

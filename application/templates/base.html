@@ -23,16 +23,16 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{{ url_for('home') }}">Home</a>
+              <a class="nav-link active" aria-current="page" href="{{ url_for('index') }}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('recent') }}">Recent</a>
+              <a class="nav-link" href="{{ url_for('workouts.view') }}">Recent</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('creation') }}">Creation</a>
+              <a class="nav-link" href="{{ url_for('workouts.create') }}">Creation</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('exercises') }}">Exercises</a>
+              <a class="nav-link" href="{{ url_for('exercises.view') }}">Exercises</a>
             </li>
           </ul>
           <form class="d-flex">
