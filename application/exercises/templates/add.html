@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% set active_page = 'exercises' %}
+
+{% block content %}
+
+<div class="row">
+  <form method="POST" id="workout_form">
+    {{ form.hidden_tag() }}
+
+    {% for m in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      {{ m }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+
+    <div class="row">
+      <div class="mb-3">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3">
+        {{ form.description.label(class="form_label") }}
+        {{ form.description(class="form-control") }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="mb-3">
+        {{ form.video_link.label(class="form_label") }}
+        {{ form.video_link(class="form-control") }}
+      </div>
+    </div>
+    <div class="row">
+        <div class="mb-3">
+          {{ form.photo.label(class="form_label") }}
+          {{ form.photo(class="") }}
+        </div>
+    </div>
+    <div class="row">
+        {{ form.add_exercise_button(class="btn btn-primary") }}
+    </div>
+
+    {% if form.errors %}
+    {{ form.errors }}
+    {% endif %}
+  </form>
+</div>
+
+{% endblock %}
