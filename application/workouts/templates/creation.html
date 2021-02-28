@@ -33,14 +33,17 @@
         </div>
     </div>
     <div class="row">
-      <div class="mb-3">
+      <div class="mb-3", id="section1">
         {{ form.workout_content.label(class="form_label") }}
         {{ form.workout_content(class="form-control") }}
       </div>
     </div>
     <div class="row mb-3">
         <div class="col-sm">
-          {{ form.add_section_button(class="btn btn-outline-dark") }}
+          {{ form.add_section_button(class="btn btn-outline-dark", onclick="add_section()") }}
+        </div>
+        <div class="col-sm">
+          <input type="button" class="btn btn-outline-dark" onclick="add_section()" value="Add Section 2">
         </div>
         <div class="col-sm">
           {{ form.add_exercise_button(class="btn btn-outline-primary") }}
@@ -63,5 +66,18 @@
     {% endif %}
   </form>
 </div>
+
+<script>
+function add_section() {
+    // get the form from the HTML page
+    // eventually workout is it's own section with id=workoutcontent
+    // then you get the sectionid for wherever the button was pressed
+    var curr_section = document.getElementById("section1");
+    var new_section = document.createElement('textarea');
+    curr_section.appendChild(new_section);
+
+    //var form_elems = form.childNodes
+}
+</script>
 
 {% endblock %}
