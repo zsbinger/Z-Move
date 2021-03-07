@@ -48,8 +48,8 @@ class WorkoutForm(FlaskForm):
     num_reps1 = IntegerField('Reps')
     # add exercise drop down with list pulled from database
 
-    add_section_button = ButtonField('Add Section')
-    add_exercise_button = SubmitField('Add Exercise')
+    add_section_button1 = ButtonField('Add Section', id='addSectionButton1')
+    add_exercise_button1 = SubmitField('Add Exercise', id='addExerciseButton1')
     submit_workout_button = SubmitField(label='Submit Workout')
     save_workout_button = SubmitField(label='Save Workout')
     load_workout_button = SubmitField(label='Load Previous Workout')
