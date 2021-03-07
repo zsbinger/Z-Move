@@ -13,12 +13,15 @@ def create():
     form = WorkoutForm()
     if form.validate_on_submit():
         flash('Your workout has been added.')
-        session['workout_content'] = form.workout_content.data
+        # session['workout_content'] = [form.exercise1.data, form.num_sets1, form.num_reps1.data]
         if request.method == "POST":
             # save to mongodb database
             name = form.name.data
             num_rounds = form.num_rounds.data
-            workout_content = form.workout_content.data
+            # workout_content = form.workout_content.data
+            workout_content = {'exercise': form.exercise1.data,
+                               'num_sets': form.num_sets1.data,
+                               'num_reps': form.num_reps1.data}
             scored = form.scored_checkbox.data
             formatted_date = datetime.datetime.today().strftime("%Y-%m-%d")
             # new_workout = Workout(name, num_rounds, workout_content, scored, formatted_date)
@@ -44,7 +47,7 @@ def view():
          workout["date"],
          datetime.datetime.strptime(workout["date"], "%Y-%m-%d").strftime("%b %d")
          )
-        for workout in Database.find_all('workouts')
+        for workout in Database.find_all('workouts').sort("date", -1)
     ]
 
     return render_template("recent.html", workouts=workouts_with_date)

@@ -1,24 +1,36 @@
 from flask_wtf import FlaskForm
+from wtforms.widgets import html_params
+from markupsafe import Markup
 from wtforms import (StringField, BooleanField, IntegerField,
                      SelectField, TextField, TextAreaField,
                      DateField, SubmitField, Field)
 from wtforms.validators import DataRequired
 
 
-# class ButtonField(Field):
-#     widget = TextInput()
-#
-#     def _value(self):
-#         if self.data:
-#             return u', '.join(self.data)
-#         else:
-#             return u''
-#
-#     def process_formdata(self, valuelist):
-#         if valuelist:
-#             self.data = [x.strip() for x in valuelist[0].split(',')]
-#         else:
-#             self.data = []
+class ButtonWidget(object):
+    """
+    https://gist.github.com/doobeh/239b1e4586c7425e5114
+    Renders a multi-line text area.
+    `rows` and `cols` ought to be passed as keyword args when rendering.
+    """
+    input_type = "button"
+
+    html_params = staticmethod(html_params)
+
+    def __call__(self, field, **kwargs):
+        kwargs.setdefault('id', field.id)
+        kwargs.setdefault('type', self.input_type)
+        if 'value' not in kwargs:
+            kwargs['value'] = field._value()
+
+        return Markup('<button {params}>{label}</button>'.format(
+            params=self.html_params(name=field.name, **kwargs),
+            label=field.label.text)
+        )
+
+
+class ButtonField(StringField):
+    widget = ButtonWidget()
 
 
 class WorkoutForm(FlaskForm):
@@ -30,10 +42,13 @@ class WorkoutForm(FlaskForm):
 
     # will eventually be a dictionary to keep track of each component
     # of the workout
-    workout_content = TextAreaField('Workout')
+    # workout_content = TextAreaField('Workout')
+    exercise1 = StringField('Exercise')
+    num_sets1 = IntegerField('Sets')
+    num_reps1 = IntegerField('Reps')
     # add exercise drop down with list pulled from database
 
-    add_section_button = SubmitField('Add Section')
+    add_section_button = ButtonField('Add Section')
     add_exercise_button = SubmitField('Add Exercise')
     submit_workout_button = SubmitField(label='Submit Workout')
     save_workout_button = SubmitField(label='Save Workout')

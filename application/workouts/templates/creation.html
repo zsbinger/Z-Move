@@ -32,18 +32,23 @@
           {{ form.scored_checkbox.label(class="form-check-label") }}
         </div>
     </div>
-    <div class="row">
-      <div class="mb-3", id="section1">
-        {{ form.workout_content.label(class="form_label") }}
-        {{ form.workout_content(class="form-control") }}
+    <div class="row mb-3" id="section1">
+      <div class="col-sm">
+        {{ form.exercise1.label(class="form-label") }}
+        {{ form.exercise1(class="form-control") }}
+      </div>
+      <div class="col-sm">
+        {{ form.num_sets1.label(class="form-label") }}
+        {{ form.num_sets1(class="form-control") }}
+      </div>
+      <div class="col-sm">
+        {{ form.num_reps1.label(class="form-label") }}
+        {{ form.num_reps1(class="form-control") }}
       </div>
     </div>
     <div class="row mb-3">
         <div class="col-sm">
           {{ form.add_section_button(class="btn btn-outline-dark", onclick="add_section()") }}
-        </div>
-        <div class="col-sm">
-          <input type="button" class="btn btn-outline-dark" onclick="add_section()" value="Add Section 2">
         </div>
         <div class="col-sm">
           {{ form.add_exercise_button(class="btn btn-outline-primary") }}
