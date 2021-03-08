@@ -12,8 +12,6 @@ class workout_section {
 }
 
 
-
-
 function add_section() {
     // get the form from the HTML page
     // eventually workout is it's own section with id=workoutcontent
@@ -93,8 +91,8 @@ function add_section() {
     exercise_col.appendChild(exercise_input);
     new_row2.appendChild(exercise_col);
 
-    var num_sets_col = document.createElement("div")
-    num_sets_col.className = "col-sm"
+    var num_sets_col = document.createElement("div");
+    num_sets_col.className = "col-sm";
     var num_sets_label = document.createElement("Label");
     num_sets_label.setAttribute("for", "num_sets".concat("2"));
     num_sets_label.className = "form-label";
@@ -109,8 +107,8 @@ function add_section() {
     num_sets_col.appendChild(num_sets_input);
     new_row2.appendChild(num_sets_col);
 
-    var num_reps_col = document.createElement("div")
-    num_reps_col.className = "col-sm"
+    var num_reps_col = document.createElement("div");
+    num_reps_col.className = "col-sm";
     var num_reps_label = document.createElement("Label");
     num_reps_label.setAttribute("for", "num_reps".concat("2"));
     num_reps_label.className = "form-label";
@@ -125,8 +123,36 @@ function add_section() {
     num_reps_col.appendChild(num_reps_input);
     new_row2.appendChild(num_reps_col);
 
+    var new_row3 = document.createElement("div");
+    new_row3.className = "row mb-3";
+    var add_section_col = document.createElement("div");
+    add_section_col.className = "col-sm";
+    var add_section_button = document.createElement("BUTTON");
+    add_section_button.innerHTML = "Add Section";
+    add_section_button.className = "btn btn-outline-dark";
+    add_section_button.setAttribute("id", "addSectionButton".concat("2"));
+    add_section_button.setAttribute("name", "add_section_button".concat("2"));
+    add_section_button.setAttribute("onclick", "add_section()");
+    add_section_button.setAttribute("type", "button");
+    add_section_button.setAttribute("value", "");
+    add_section_col.appendChild(add_section_button);
+    new_row3.appendChild(add_section_col);
+    var add_exercise_col = document.createElement("div");
+    add_exercise_col.className = "col-sm";
+    var add_exercise_button = document.createElement("BUTTON");
+    add_exercise_button.innerHTML = "Add Exercise";
+    add_exercise_button.className = "btn btn-outline-primary";
+    add_exercise_button.setAttribute("id", "addExerciseButton".concat("2"));
+    add_exercise_button.setAttribute("name", "add_exercise_button".concat("2"));
+    add_exercise_button.setAttribute("onclick", "add_exercise()");
+    add_exercise_button.setAttribute("type", "button");
+    add_exercise_button.setAttribute("value", "");
+    add_exercise_col.appendChild(add_exercise_button);
+    new_row3.appendChild(add_exercise_col);
+
     sectionDiv.appendChild(new_row);
     sectionDiv.appendChild(new_row2);
+    sectionDiv.appendChild(new_row3);
 
     curr_section.appendChild(sectionDiv);
 
